@@ -55,7 +55,34 @@
         struct ComplexNumber
         {
 
+            private double re, im;
+            public ComplexNumber() { }
+
+            public ComplexNumber(double _re, double _im)
+            {
+                re = _re;
+                im = _im;
+            }
+
+            public ComplexNumber(double _mod, int _arg)
+            {
+                re = _mod * Math.Cos(_arg);
+                im = _mod * Math.Sin(_arg);
+            }
+
+            public static ComplexNumber operator +(ComplexNumber num1, ComplexNumber num2)
+            {
+                return new ComplexNumber(num1.re + num2.re, num2.im + num2.im);
+            }
+
+            public static ComplexNumber operator -(ComplexNumber num1, ComplexNumber num2)
+            {
+                return new ComplexNumber(num1.re - num2.re, num2.im - num2.im);
+            }
+            public void Print() { Console.WriteLine("Re ->" ,re,"Im->" , im); }
+            
         }
+    
 
         struct Birthday
         {
@@ -356,6 +383,13 @@
             a.mult(3);
             Console.WriteLine();
 
+            ComplexNumber w=new ComplexNumber(5,1);
+            ComplexNumber d=new ComplexNumber(6,2);
+            ComplexNumber e = w + d;
+
+            w.Print();
+            d.Print();
+            e.Print();
 
             Console.WriteLine();
             Birthday Anj = new Birthday(12,3,2012);
